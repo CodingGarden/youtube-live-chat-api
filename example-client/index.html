@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Live Chat</title>
+</head>
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2.3.0/dist/socket.io.js"></script>
+  <script>
+    const socket = io('http://localhost:5000');
+    // listen for new messages in realtime
+    socket.on('messages', (messages) => {
+      console.log(messages);
+    });
+
+    // REST Endpoints:
+    
+    // Get a list of all youtube events
+    // GET http://localhost:5000/events
+
+    // Get a list of all live chat messages
+    // GET http://localhost:5000/messages
+
+    // Filter messages by liveChatId (obtain id from events endpoint)
+    // GET http://localhost:5000/messages?liveChatId=some-liveChatId-from-active-events-endpoint-to-filter-messages
+
+    // Filter messages by some regex against the message
+    // GET http://localhost:5000/messages?q=any-valid-regular-expression-to-filter-messages
+  </script>
+</body>
+</html>
